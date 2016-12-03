@@ -175,8 +175,10 @@ public class Sorting {
 
 		@Override
 		public int compare(String arg0, String arg1) {
-			// TODO Auto-generated method stub
-			return 0;
+//			if(Integer.parseInt(arg0)>Integer.parseInt(arg1)) return 1;
+//			else if(Integer.parseInt(arg0)<Integer.parseInt(arg1)) return -1;
+//			else return 0;
+			return Integer.parseInt(arg0) - Integer.parseInt(arg1);
 		}
 
 	}

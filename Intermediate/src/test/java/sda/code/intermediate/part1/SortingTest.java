@@ -118,9 +118,9 @@ public class SortingTest {
 
 	@Test
 	public void testSortWithComparator() {
-		fail("Uncomment test");
-//		ArrayList<String> outArray = sut.sortWithComparator(numbersArray, new Sorting.NumericIntegerComparator());
-//		assertEquals(sortedNumbersArray, outArray);
+		//fail("Uncomment test");
+		ArrayList<String> outArray = sut.sortWithComparator(numbersArray, new Sorting.NumericIntegerComparator());
+		assertEquals(sortedNumbersArray, outArray);
 	}
 
 	@Test
