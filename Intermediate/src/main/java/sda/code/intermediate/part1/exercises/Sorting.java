@@ -168,7 +168,6 @@ public class Sorting {
 				}
 			}
 		} while (isSorted);
-
 	}
 
 	public static class NumericIntegerComparator implements Comparator<String> {
