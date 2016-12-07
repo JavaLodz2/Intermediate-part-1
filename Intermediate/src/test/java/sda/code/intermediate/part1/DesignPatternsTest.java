@@ -1,6 +1,7 @@
 package sda.code.intermediate.part1;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -23,17 +24,34 @@ public class DesignPatternsTest {
 
 	@Test
 	public void loadingConfig() {
-		fail("Uncomment test");
-//		assertTrue(Settings.CONFIG.getBoolean("success"));
-//		assertEquals(42, Settings.CONFIG.getInteger("answer"));
-//		assertEquals("World", Settings.CONFIG.getString("hello.msg"));
+		// fail("Uncomment test");
+		assertTrue(Settings.CONFIG.getBoolean("success"));
+		assertEquals(42, Settings.CONFIG.getInteger("answer"));
+		assertEquals("World", Settings.CONFIG.getString("hello.msg"));
 	}
 
 	@Test(expected = SettingMissing.class)
 	public void loadingMissingConfig() {
-		fail("Uncomment test");
-//		Settings.CONFIG.getBoolean("non-existent");
+		// fail("Uncomment test");
+		Settings.CONFIG.getBoolean("non-existent");
 	}
+
+	@Test
+	public void loadDefaultConfig() {
+		assertEquals("defaultValue", Settings.CONFIG.getString("someValue", "defaultValue"));
+		assertEquals("World", Settings.CONFIG.getString("hello.msg", "W"));
+		assertEquals("Wrong", Settings.CONFIG.getString("hellomsg", "Wrong"));
+		assertTrue(Settings.CONFIG.getBoolean("success", false));
+		assertFalse(Settings.CONFIG.getBoolean("ssuccess", false));
+		assertEquals(42, Settings.CONFIG.getInteger("answer", 52));
+		assertEquals(52, Settings.CONFIG.getInteger("aanswer", 52));
+	}
+	
+	//TODO dopisaæ rzucanie wyj¹tkiem w przypadku parsowania Integer.
+//	@Test(expected = NumberFormatException.class)
+//	public void testFailedNumberParsing(){
+//		assertEquals(0, Settings.CONFIG.getInteger("answer", 0));
+//	}
 
 	@Test
 	public void buildItem() {

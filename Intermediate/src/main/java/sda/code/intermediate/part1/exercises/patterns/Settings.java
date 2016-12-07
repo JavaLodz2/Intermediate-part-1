@@ -4,7 +4,8 @@ import java.util.Properties;
 
 import sda.code.intermediate.FileUtils;
 
-public class Settings {
+public enum Settings {
+	CONFIG;
 
 	private final Properties props;
 
@@ -13,15 +14,46 @@ public class Settings {
 	}
 
 	public String getString(String name) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		String value = props.getProperty(name);
+		if (value == null) {
+			throw new SettingMissing(name);
+		} else {
+			return value;
+		}
+		// throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	public int getInteger(String name) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		String value = props.getProperty(name);
+		if (value == null) {
+			throw new SettingMissing(name);
+		} else {
+			return Integer.parseInt(value);
+		}
+		// throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	public boolean getBoolean(String name) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		String value = props.getProperty(name);
+		if (value == null) {
+			throw new SettingMissing(name);
+		} else {
+			return Boolean.parseBoolean(value);
+		}
+		// throw new UnsupportedOperationException("Not implemented yet");
 	}
 
+	public String getString(String name, String defaultValue) {
+		//props.getProperty(name, defaultValue);
+		return (props.containsKey(name)) ? getString(name) : defaultValue;
+	}
+
+	public int getInteger(String name, int defaultValue) {
+		//TODO Rzuæ wyj¹tkiem je¿eli nie sparsowano Integera
+		return (props.containsKey(name)) ? getInteger(name) : defaultValue;
+	}
+
+	public boolean getBoolean(String name, boolean defaultValue) {
+		return (props.containsKey(name)) ? getBoolean(name) : defaultValue;
+	}
 }
