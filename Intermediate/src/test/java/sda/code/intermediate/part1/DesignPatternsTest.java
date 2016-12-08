@@ -47,11 +47,11 @@ public class DesignPatternsTest {
 		assertEquals(52, Settings.CONFIG.getInteger("aanswer", 52));
 	}
 	
-	//TODO dopisaæ rzucanie wyj¹tkiem w przypadku parsowania Integer.
-//	@Test(expected = NumberFormatException.class)
-//	public void testFailedNumberParsing(){
-//		assertEquals(0, Settings.CONFIG.getInteger("answer", 0));
-//	}
+	//TODO dopisaï¿½ rzucanie wyjï¿½tkiem w przypadku parsowania Integer.
+	@Test(expected = NumberFormatException.class)
+	public void testFailedNumberParsing(){
+		Settings.CONFIG.getInteger("success", 0);
+	}
 
 	@Test
 	public void buildItem() {

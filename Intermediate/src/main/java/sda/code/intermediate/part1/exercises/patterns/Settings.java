@@ -23,7 +23,7 @@ public enum Settings {
 		// throw new UnsupportedOperationException("Not implemented yet");
 	}
 
-	public int getInteger(String name) {
+	public int getInteger(String name){
 		String value = props.getProperty(name);
 		if (value == null) {
 			throw new SettingMissing(name);
@@ -44,13 +44,24 @@ public enum Settings {
 	}
 
 	public String getString(String name, String defaultValue) {
-		//props.getProperty(name, defaultValue);
+		// props.getProperty(name, defaultValue);
 		return (props.containsKey(name)) ? getString(name) : defaultValue;
 	}
 
 	public int getInteger(String name, int defaultValue) {
-		//TODO Rzuæ wyj¹tkiem je¿eli nie sparsowano Integera
-		return (props.containsKey(name)) ? getInteger(name) : defaultValue;
+		// TODO Rzuï¿½ wyjï¿½tkiem jeï¿½eli nie sparsowano Integera
+		if (props.containsKey(name)) {
+			try {
+				int value = getInteger(name);
+				return value;
+			} catch (NumberFormatException e) {
+				//Rzuc exceptiona do testow ale normalnie zwroc defaultValue
+				//return defaultValue;
+				throw new NumberFormatException();
+			}
+		}
+		return defaultValue;
+		// return (props.containsKey(name)) ? getInteger(name) : defaultValue;
 	}
 
 	public boolean getBoolean(String name, boolean defaultValue) {
