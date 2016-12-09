@@ -1,3 +1,9 @@
-# Sorting-tests
+# Intermediate - part 1
 
-Sorting methods testing in JUnit. For learning purposes.
+Intermediate exercises with JUnit.
+- Sorting methods
+- Functional programming in Java
+- Streams
+- Design patterns
+
+For learning purposes.
