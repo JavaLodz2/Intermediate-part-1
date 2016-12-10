@@ -58,6 +58,8 @@ public enum Settings {
 				//Rzuc exceptiona do testow ale normalnie zwroc defaultValue
 				//return defaultValue;
 				throw new NumberFormatException();
+				//delete
+				//
 			}
 		}
 		return defaultValue;
