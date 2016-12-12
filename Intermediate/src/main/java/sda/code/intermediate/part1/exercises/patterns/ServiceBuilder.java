@@ -6,17 +6,27 @@ public class ServiceBuilder extends ProductBuilder<ServiceBuilder, Service> {
 	private Integer time;
 
 	public ServiceBuilder withTime(Integer time) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		this.time = time;
+		return this;
+		//Servicebuilder zwraca sam siebie aby mogl byc builderem.
+		//throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	@Override
 	protected void validate() {
-		throw new UnsupportedOperationException("Not implemented yet");
+		//Wywolanie metody validate z klasy rodzica
+		super.validate();
+		if(time<=0) {
+			throw new InvalidBuilderState("");
+		}
+		//throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	@Override
 	public Service build() {
-		throw new UnsupportedOperationException("Not implemented yet");
+		validate();
+		return new Service(this.name, this.price, this.time);
+		//throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 }

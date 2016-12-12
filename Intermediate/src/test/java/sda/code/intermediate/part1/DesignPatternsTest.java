@@ -47,7 +47,6 @@ public class DesignPatternsTest {
 		assertEquals(52, Settings.CONFIG.getInteger("aanswer", 52));
 	}
 	
-	//TODO dopisa� rzucanie wyj�tkiem w przypadku parsowania Integer.
 	@Test(expected = NumberFormatException.class)
 	public void testFailedNumberParsing(){
 		Settings.CONFIG.getInteger("success", 0);
@@ -74,7 +73,7 @@ public class DesignPatternsTest {
 
 	@Test(expected = InvalidBuilderState.class)
 	public void incompleteServiceBuild() {
-		new ItemBuilder().withName("Calculator watch").build();
+		new ServiceBuilder().withName("Calculator watch").withTime(10).build();
 	}
 
 	@Test(expected = InvalidBuilderState.class)
@@ -84,7 +83,7 @@ public class DesignPatternsTest {
 
 	@Test(expected = InvalidBuilderState.class)
 	public void invalidBuilderConvertedException() {
-		new ServiceBuilder().withName("MMO").withPrice("X");
+		new ServiceBuilder().withName("MMO").withPrice("X").withTime(10).build();
 	}
 
 	@Test

@@ -49,14 +49,12 @@ public enum Settings {
 	}
 
 	public int getInteger(String name, int defaultValue) {
-		// TODO Rzu� wyj�tkiem je�eli nie sparsowano Integera
 		if (props.containsKey(name)) {
 			try {
 				int value = getInteger(name);
 				return value;
 			} catch (NumberFormatException e) {
 				//Rzuc exceptiona do testow ale normalnie zwroc defaultValue
-				//return defaultValue;
 				throw new NumberFormatException();
 			}
 		}

@@ -9,16 +9,32 @@ public abstract class ProductBuilder<T, R> {
 
 	public T withName(String name) {
 		this.name = name;
+		// Builder rozni siê od settera ze zwraca sam siebie
 		return (T) this;
 	}
 
 	public T withPrice(String price) {
-		this.price = new BigDecimal(price);
-		return (T) this;
+
+		try {
+			this.price = new BigDecimal(price);
+			return (T) this;
+		} catch (NumberFormatException e) {
+			throw new InvalidBuilderState("");
+		}
 	}
 
 	protected void validate() {
-		throw new UnsupportedOperationException("Not implemented yet");
+
+		if (name == null || name.isEmpty()) {
+			throw new InvalidBuilderState("");
+		}
+		if (price == null) {
+			throw new InvalidBuilderState("");
+		}
+		if (price.doubleValue() <= 0) {
+			throw new InvalidBuilderState("");
+		}
+		// throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	public abstract R build();

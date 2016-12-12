@@ -8,15 +8,20 @@ public class ProductFactory {
 	public static final String TEST_PRODUCT_PRICE = "0.01";
 
 	public static ItemBuilder newItem() {
-		throw new UnsupportedOperationException("Not implemented yet");
+		return new ItemBuilder();
+		//throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	public static ServiceBuilder newService() {
-		throw new UnsupportedOperationException("Not implemented yet");
+		return new ServiceBuilder();
+		//throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	public static Product testProduct() {
-		throw new UnsupportedOperationException("Not implemented yet");
+		
+		return newItem().withName(TEST_PRODUCT_NAME).withPrice(TEST_PRODUCT_PRICE).withWeight(1.0).build();
+		//throw new UnsupportedOperationException("Not implemented yet");
+		//
 	}
 
 }
