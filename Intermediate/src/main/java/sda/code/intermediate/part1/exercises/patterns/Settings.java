@@ -56,6 +56,8 @@ public enum Settings {
 			} catch (NumberFormatException e) {
 				//Rzuc exceptiona do testow ale normalnie zwroc defaultValue
 				throw new NumberFormatException();
+				//delete
+				//
 			}
 		}
 		return defaultValue;
