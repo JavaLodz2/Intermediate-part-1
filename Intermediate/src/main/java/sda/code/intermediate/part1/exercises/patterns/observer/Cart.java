@@ -21,7 +21,14 @@ public class Cart implements Subscriber<Product> {
 
 	@Override
 	public void handle(Event<Product> event) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		if(event instanceof ProductAdded){
+			total = total.add(event.getContext().getPrice());			
+		} else if (event instanceof ProductRemoved){
+			total = total.subtract(event.getContext().getPrice());
+		} else {
+			throw new UnhandledMessage("");
+		}
+		//throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 }

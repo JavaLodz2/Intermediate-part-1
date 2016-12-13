@@ -16,19 +16,33 @@ public class ListOfProducts implements Publisher<Product> {
 	}
 
 	public void add(Product product) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		products.add(product);
+		fireEvent(new ProductAdded(product));
+		// throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	public void remove(Product product) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		if(!products.isEmpty()){
+			products.remove(product);
+			fireEvent(new ProductRemoved(product));
+		}
+		// throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	@Override
 	public void subscribe(Subscriber<Product> subscriber) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		subscribers.add(subscriber);
+		
+		for(Product p : products){
+			fireEvent(new ProductAdded(p));
+		}
+		// throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	private void fireEvent(Event<Product> event) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		for (Subscriber<Product> s : subscribers) {
+			s.handle(event);
+		}
+		// throw new UnsupportedOperationException("Not implemented yet");
 	}
 }
