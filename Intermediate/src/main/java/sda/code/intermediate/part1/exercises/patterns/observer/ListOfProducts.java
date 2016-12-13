@@ -22,10 +22,12 @@ public class ListOfProducts implements Publisher<Product> {
 	}
 
 	public void remove(Product product) {
-		if(!products.isEmpty()){
-			products.remove(product);
-			fireEvent(new ProductRemoved(product));
-		}
+//		if(!products.isEmpty()){
+			if(products.remove(product)){
+				
+				fireEvent(new ProductRemoved(product));
+			}
+		//}
 		// throw new UnsupportedOperationException("Not implemented yet");
 	}
 
